@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+	<h1>Bienvenidos al curso de Spring Boot</h1>
+	
+	
+		<!--  	private String codigo;
+	private String nombre;
+	private Double precio;
+	private String observacion;
+	private int categoria; -->
+	
+	<table class="table table-bordered" >
+		<thead>
+			<tr>
+				<th>Codigo</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Observacion</th>
+				<th>Categoria</th>	
+				<th>Acciones</th>		
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="prod : ${lista}" > 
+				<td th:text="${prod.codigo}" ></td>
+				<td th:text="${prod.nombre}" ></td>
+				<td th:text="${prod.precio}" ></td>
+				<td th:text="${prod.observacion}" ></td>
+				<td th:text="${prod.categoria}" ></td>
+				<td>
+				<a th:href="@{/producto/edit/{id}(id=${prod.codigo})}" class="btn btn-primary" >Editar</a>
+				<a 
+				th:href="@{/producto/borrar/{id}(id=${prod.codigo})}" 
+				class="btn btn-warning" >Borrar</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<!-- <div th:each="prod : ${lista}" >
+		<p th:text="${prod.nombre}" ></p>
+		<p th:text="${prod.precio}" ></p>
+	</div> -->
+	
+	<a class="btn btn-success" th:href="@{/producto/add}" >Agregar</a>
+</body>
+</html>
